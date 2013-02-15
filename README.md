@@ -2,32 +2,59 @@
 
 ## Coursework 1 - Project Selctr (UI)
 
+### Deadlines
+
 ### Background
 
-One of my administration roles within the College of Engineering is coordinator of Level 3 research projects. This involves the annual collection of project titles from staff and the distribution of these to students for selection.
-This project is to develop a Single Page App (SPA) ...
+One of my administration roles within the College of Engineering is Coordinator of Level 3 Research Projects. This involves the annual collection of project titles from staff and the distribution of these to students for selection.
 
-### About Proman
+This years coursework will be to develop a Single Page App (SPA) to help students with their project selection. The first part will be to develop the selection and ordering application. The second part will be to add authentication and storage of selections using a so-called RESTful API. Any really good solutions will be considered for incorporation in the real project selection process this year.
 
 ### The Task
 
+A prototype, implemented as a traditional document-oriented HTML app accessible through [index.html](https://github.com/cpjobling/eg-259-cw-2013/blob/master/index.html) on the [GitHub project repository](https://github.com/cpjobling/eg-259-cw-2013), has been provided. By opening this page in a web browser and selecting "Project 5" in the various views you will get an idea of what is required. We can divide the work into several phases:
+
+1. A **master detail view** of the projects. A list of project titles (a suitable JavaScript array of data objects is provided in the file [js/main.js](https://github.com/cpjobling/eg-259-cw-2013/blob/master/js/main.js)) is displayed in the left-hand column. When the user clicks on a title, the detail is displayed in the right-hand column. This should happen without a page refresh.
+2. Implement a **project selection feature**. The students select projects they are interested in either using a checkbox as per the prototype or by some other mechanism, e.g. a double-click on the project title. The selection should be acknowledged by changing the colour of the selected project. This should be reversible, so checking (or double-clicking) an already selected project should change it to unselected and return the colour to the default. Note that user interface changes are most easiliy effected by adding or removing of CSS classes from the elements concerned.
+3. Implement a **selection sorter control**. Once a set of at least 5 projects have been selected, students can use the *Order selected projects* button to go into sort mode (See [order.html](https://github.com/cpjobling/eg-259-cw-2013/blob/master/order.html) in the prototype). Either on a separate view (or perhaps on the the same view above the list of selected projects) the student can use some mechanism to sort the selected projects into the desire order with most prefered at the top. It still be possible to select and view the details of the projects in this mode. Any mechanism you like can be used for this sorting procedure providing that the sorted list of project ids is available as an ordered list that can be stored and recalled later. You will probably need a separate *selected projects* model, probably containing a JavaScript array of project ids, for this.
+4. Implement a **project submission and confirmation view**. Once the list is complete, a submit project selection button should be available, which returns the user to a confirmation view (see [receipt.html](https://github.com/cpjobling/eg-259-cw-2013/blob/master/receipt.html) in the supplied prototype. This view will have a "New selection" button that takes the user the original selection view. This view probably should have the original list at the top and the remaining unselected projects at the bottom as shown in the dummy [new-selection.html](https://github.com/cpjobling/eg-259-cw-2013/blob/master/new-selection.html) page.
+
+Important Note: **It is not required that the data goes anywhere when the submit button is pressed. This feature will be added as part of Coursework 2.**
+
+Various variations and enhancements are possible. Here are some suggestions and some implementation notes:
+
+* Drag-and-drop selection will be more challenging than some other methods
+* The selection and sorting could be done on the same page, perhaps with selected projects moving into a sort region as they are selected. 
+* You could use a filter button to show only non-selected projects, or selected projects, or only projects by a certain supervisor, or research centre, etc.
+* You could implement a search feature (challenging)
+* Double-click is not an action that you can perform on a mobile device!
+
+Some marks will be available to reward such enhancements.
+
 ### The Starting Template
 
-### Recommended Approach
-
-### The Assessment
-
-There are 15% of the 25% available for this exercise. An additional 5%  will be awarded for successfully creating the RESTful API for the back-end and 5% is awarded to your engagement with PeerWise.
-
-### References
-
-As distributed, this is a dummy app. It behaves as I want the final app
-to behave but it uses traditional server fetches to change pages. In the
+As distributed, this is a dummy app. It behaves somewhat like I want the final app
+to behave but it uses traditional server fetches to change the contents of the pages (or *views*). In the
 final app, the first coursework requires that you get user interface to
 work as a Single Page App (SPA) using JavaScript to react to the page
-and redraw just the parts that need to change.
+and redraw just the parts that need to change. 
 
 The second coursework will build upon this app to allow the download of
 data in a JSON format from a Restful API and the upload of student selections, also in JSON, via an Ajax call.
 
-The styles and basic JavaScript dependencies are set up for you.
+The styles and basic JavaScript dependencies have been set up for you, but you may customise them if you wish.
+
+### Recommended Approach
+
+### Submission and Assessment
+
+The easiest way to submit your solution will be to fork my version of the app and send me a pull request when you wish to submit your version of the final code.
+
+The *only* resources that will be assessed will be your version of *index.html* plus your versions of *main.js* and *main.css* and any additional images and resources that you add to the project. You will not need to use the other HTML pages that I have provided, and they should be removed from your project when their functionality has been replaced by the equivalent SPA feature.
+
+for this exercise there are 15% of the 25% available for Coursework in EG-259. An additional 5%  will be awarded for successfully creating the RESTful API for the back-end and 5% is awarded to your engagement with PeerWise.
+
+**Your assistance in coming up with a fair marking scheme would be appreciated**.
+
+### References
+
