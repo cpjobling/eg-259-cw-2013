@@ -48,7 +48,7 @@ The styles and basic JavaScript dependencies have been set up for you, but you m
 
 ### Recommended Approach
 
-You should fork this repository (you will need a GitHub account) ...
+You should fork this repository (you will need a GitHub account) then clone a local copy. You should set the "upstream" repository to <https://github.com/cpjobling/eg-259-cw-2013>. Full instructions are given here: <https://help.github.com/articles/fork-a-repo>. On a Mac, the easiest way to do this is from a Terminal window. On a Windows machine, you should download and install the [GitHub for Windows](http://windows.github.com/) client and use the GitHub (command line) shell.
 
 ### Submission and Assessment
 
