@@ -50,6 +50,10 @@ The styles and basic JavaScript dependencies have been set up for you, but you m
 
 You should fork this repository (you will need a GitHub account) then clone a local copy. You should set the "upstream" repository to <https://github.com/cpjobling/eg-259-cw-2013>. Full instructions are given here: <https://help.github.com/articles/fork-a-repo>. On a Mac, the easiest way to do this is from a Terminal window. On a Windows machine, you should download and install the [GitHub for Windows](http://windows.github.com/) client and use the GitHub (command line) shell.
 
+For the implementation we would recommend the use of a so-called Model View Controller (MVC) framework. We shall study one of these, probably Backbone.js, in class. You could implement the client app using pure  "*vanilla*" JavaScript or even jQuery, but you will probably find that the coupling of your code to the DOM and the chaining of complex event handlers that would result, may well make the code more complex than it needs to be.
+
+For more on MVC libraries and examples of their use, please visit the [TodoMVC](http://addyosmani.github.com/todomvc/) site.
+
 ### Submission and Assessment
 
 The easiest way to submit your solution will be to fork my version of the app and send me a pull request when you wish to submit your version of the final code.
@@ -61,4 +65,11 @@ for this exercise there are 15% of the 25% available for Coursework in EG-259. A
 **Your assistance in coming up with a fair marking scheme would be appreciated**.
 
 ### References
+
+1. Addy Osmani and Sindre Sorhus, *TodoMVC*. The same Web App implemented using a range of JavaScript MVC frameworks for the purposes of comparison and evaluation. URL: <http://addyosmani.github.com/todomvc/>.
+2. Backbone.js, A popular and compact JavaScript MVC framework. URL: <http://backbonejs.org/>.
+3. jQuery, a popular JavaScript library which gives a more pleasant API to the DOM and cross-browser support. URL: <http://jquery.com/>
+4. (Twitter) Bootstrap - a popular and widely used CSS and JavaScript framework for creating responsive web apps. Originally developed by engineers at Twitter. Now maintained and supported as an open source project. URL: <http://twitter.github.com/bootstrap/>.
+5. HTML5 Boiler Plate - a starter pack for web apps. URL: <http://html5boilerplate.com/>
+6. Initializr - an interactive tool for creating boilerplate HTML5 projects. Currently supports HTML5 Bolier Plate and Bootstrap. Used as a starting point for this repository. URL: <http://www.initializr.com/>
 
