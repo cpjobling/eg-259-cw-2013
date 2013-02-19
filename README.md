@@ -2,7 +2,9 @@
 
 ## Coursework 1 - Project Selctr (UI)
 
-### Deadlines
+### Deadline
+
+12.03 pm Friday 19 April 2013
 
 ### Background
 
@@ -45,6 +47,8 @@ data in a JSON format from a Restful API and the upload of student selections, a
 The styles and basic JavaScript dependencies have been set up for you, but you may customise them if you wish.
 
 ### Recommended Approach
+
+You should fork this repository (you will need a GitHub account) ...
 
 ### Submission and Assessment
 
