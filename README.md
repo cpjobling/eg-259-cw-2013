@@ -66,7 +66,42 @@ You can also install your forked version of the project into your copy of the [E
 
 #### Using the Built-in Server
 
+The application as distributed contains a simple web server implemented using Python's ``SimpleHttpServer`` class. Running
+
+``
+./bin/server
+``
+
+from the top-level directory will start an HTTP server (which only serves static files) that is listening to port 3000. Connecting to <http://localhost:3000> will load *index.html* in your browser and any changes that you make can be instantling applied by refreshing the browser.
+
+For windows users, executing the command file ``.\bin\server.bat`` from the Command Prompt will have the same affect.
+
 #### Deploying your App as an EG-259-VM Submodule
+
+You can of course deploy your version of the Web App by copying the source files into the ``web`` folder (or one of its subfolders) on your copy of the EG-259 Virtual Machine. You can enjoy the benefits of this along with version control by using Git Submodules. The set-up is quite straightforward.
+
+Simply chose a URL where you wish your app to be. I suggest something like ``/pselectr_student_number``. Go to the ``web`` folder in your copy of ``eg-259-vm`` and clone your fork of this project as a submodule.
+
+    $ ~/eg-259-vm> cd web
+    $ ~/eg-259-vm/web> git submodule add git:/github.com/your_github_user_name/eg-235-cw-2013.git pselectr_student_number
+
+This command will create a new folder ``eg-259-vm/web/pselectr_student_number`` in your web space, initialize a git repository, download a copy of the cloned ``eg-259-cw-2013`` repository from GitHub, checkout the master branch and make a record of this repository as a submodule of your copy of the ``eg-259-vm project``. 
+
+You will now have an independent GitHub repository inside your copy of the EG-259 virtual machine which allows you to develop and version control your web app indepdentantly of the ``eg-259-vm`` repository. You will want to check-in the changed ``.gitmodules`` file (note that this file name starts with a period, and so is hidden on Mac and Linux machines) which you can do by issuing these commands:
+
+    $ ~/eg-259-vm/web> git add ../.gitmodules
+    $ ~/eg-259-vm/web> git commit -m "Add eg-259-cw-2013 as submodule"
+
+You can continue to pull changes from <http://github.com/cpjobling/eg-259-vm> independently of any changes you make to the new repository in ``eg-259-vm/web/pselectr_student_number``. Furthermore, after issuing the ``vagrant up`` command, your web app will appear at URL <http://localhost:4567/pselectr_student_number>, and even better, any changes that you make locally will be automatically updated in the browser on refresh.
+
+Lastly, if you ever need to sync your submodule changes from the ``eg-259-vm`` folder run the commands:
+
+    $ ~/eg-259-vm> git pull
+    $ ~/eg-259-vm> git submodule update
+    
+The first time you do this, Git will incorporate any changes from <http://github.com/cpjobling/eg-259-vm> and clone the original code for *this* repository as submodule ``web/eg-259/webapp``. Thus <http://localhost:4567/eg-259/webapp> is a copy of the static version of the coursework site that you can use for reference. Thereafter, it will update ``web/eg-259/webapp`` and pull any changes that you have made to your copy of the coursework that have been pushed to GitHub. After this initial setup, as your changes will be recorded in the local submodule anyway, the ``submodule update`` command will only be useful for setting up ``eg-259-vm`` on a different machine or in a different folder.
+
+For more information about Git Submodules see [Git Tools - Submodules](http://git-scm.com/book/en/Git-Tools-Submodules) [7]. For more on use of Git for version control, we recommend that you spend 30 minutes to work through the on-line [Try Git](http://try.github.com/levels/1/challenges/1) tutorial, and thereafter refer to the [Pro Git Book](http://git-scm.com/book) [7].
 
 ### Submission and Assessment
 
@@ -86,4 +121,5 @@ for this exercise there are 15% of the 25% available for Coursework in EG-259. A
 4. (Twitter) Bootstrap - a popular and widely used CSS and JavaScript framework for creating responsive web apps. Originally developed by engineers at Twitter. Now maintained and supported as an open source project. URL: <http://twitter.github.com/bootstrap/>.
 5. HTML5 Boiler Plate - a starter pack for web apps. URL: <http://html5boilerplate.com/>
 6. Initializr - an interactive tool for creating boilerplate HTML5 projects. Currently supports HTML5 Bolier Plate and Bootstrap. Used as a starting point for this repository. URL: <http://www.initializr.com/>
+7. Scott Chacon, *Pro Git*, Apress, 2009. Available on-line for free in various formats at <http://git-scm.com/book>.
 
