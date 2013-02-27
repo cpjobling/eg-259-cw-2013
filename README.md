@@ -60,9 +60,13 @@ For more on MVC libraries and examples of their use, please visit the [TodoMVC](
 
 The application will run from a local filesystem, but it is more realistic to run it in a browser over an HTTP connection.
 
-If you have [Python](#) installed on your development system, you can load the application in your browser by using the built-in server. See [Using the Built-in Server](#) for details.
+If you have [Python](Deploying your App as an EG-259-VM Submodule) installed on your development system (Python is already instaled on Mac and most Linux distributions), you can load the application in your browser by using the built-in server. See [Using the Built-in Server](#using-the-built-in-server) for details.
 
-You can also install your forked version of the project into your copy of the [EG-259 Virtual Machine](#). See [Using this Project as a Submodule](#) for a recipe for this.
+You can also install your forked version of the project into your copy of the [EG-259 Virtual Machine](https://github.com/cpjobling/eg-259-vm). See [Deploying your App as an EG-259-VM Submodule](#deploying-your-app-as-an-eg-259-vm-submodule) for a recipe for this.
+
+#### Using the Built-in Server
+
+#### Deploying your App as an EG-259-VM Submodule
 
 ### Submission and Assessment
 
