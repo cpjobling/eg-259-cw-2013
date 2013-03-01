@@ -184,19 +184,27 @@
     }
     ];
 
-    $('a.project').click(function(event) {
-        var link = $(this).attr('href');
-        var id = link.match(/^\/projects\/(.*)$/);
-        // find data item such that data.id === id;
+    // Find a project that matches the given id. Assumes each data object has a field
+    // called '_id'
+    var find_by_id = function(data,id) {
         for (var i = 0; i < data.length; i++) {
-            project = data[i];
-            if (project._id === id) {
-                break;
+            obj = data[i];
+            // do properties of object match the arguments?
+            if (obj._id == id) {
+                return obj;
             }
-        }
-        console.log(project);
-        console.log(link.match(/^\/projects\/(.*)$/)[1]);
-        console.log("link " + $(this).attr('href') + " has been clicked!");
+            // if we get to here, no match was found
+        }   
+        console.warn("find_by_id - couldn't find object with _id: " + id); 
+    }
+
+    // Find project that shares id of clicked link 
+    $('a.project').click(function(event) {
         event.preventDefault();
+        var link = $(this).attr('href');
+        var id = (link.match(/^\/projects\/(.*)$/))[1];
+        project = find_by_id(data, id);
+        console.log(project);
     });
+
 })(jQuery);
