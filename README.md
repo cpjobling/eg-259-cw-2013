@@ -101,7 +101,7 @@ Lastly, if you ever need to sync your submodule changes from the ``eg-259-vm`` f
     
 The first time you do this, Git will incorporate any changes from <http://github.com/cpjobling/eg-259-vm> and clone the original code for *this* repository as submodule ``web/eg-259/webapp``. Thus <http://localhost:4567/eg-259/webapp> is a copy of the static version of the coursework site that you can use for reference. Thereafter, it will update ``web/eg-259/webapp`` and pull any changes that you have made to your copy of the coursework that have been pushed to GitHub. After this initial setup, as your changes will be recorded in the local submodule anyway, the ``submodule update`` command will only be useful for setting up ``eg-259-vm`` on a different machine or in a different folder.
 
-For more information about Git Submodules see [Git Tools - Submodules](http://git-scm.com/book/en/Git-Tools-Submodules) [7]. For more on use of Git for version control, we recommend that you spend 30 minutes to work through the on-line [Try Git](http://try.github.com/levels/1/challenges/1) tutorial, and thereafter refer to the [Pro Git Book](http://git-scm.com/book) [7].
+For more information about Git Submodules see [Git Tools - Submodules](http://git-scm.com/book/en/Git-Tools-Submodules) [7]. For more on use of Git for version control, we recommend that you spend 30 minutes to work through the on-line [Try Git](http://try.github.com/levels/1/challenges/1) tutorial [8], and thereafter refer to the [Pro Git Book](http://git-scm.com/book) [7].
 
 ### Submission and Assessment
 
@@ -121,5 +121,6 @@ for this exercise there are 15% of the 25% available for Coursework in EG-259. A
 4. (Twitter) Bootstrap - a popular and widely used CSS and JavaScript framework for creating responsive web apps. Originally developed by engineers at Twitter. Now maintained and supported as an open source project. URL: <http://twitter.github.com/bootstrap/>.
 5. HTML5 Boiler Plate - a starter pack for web apps. URL: <http://html5boilerplate.com/>
 6. Initializr - an interactive tool for creating boilerplate HTML5 projects. Currently supports HTML5 Bolier Plate and Bootstrap. Used as a starting point for this repository. URL: <http://www.initializr.com/>
-7. Scott Chacon, *Pro Git*, Apress, 2009. Available on-line for free in various formats at <http://git-scm.com/book>.
+7. Scott Chacon, *Pro Git*, Apress, 2009. Available on-line for free in various formats at URL <http://git-scm.com/book>.
+8. *Try Git*, Free on-line game-like interactive tutorial created by [codeschool.com](http://www.codeschool.com) for GitHub. URL: <http://try.github.com/levels/1/challenges/1>.
 
