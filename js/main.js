@@ -1,5 +1,5 @@
 (function($){
-    var data = [
+    data = [
     {
         _id: 1,
         title: 'Project 1',
@@ -183,4 +183,20 @@
         description: "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent accumsan, felis nec euismod bibendum, tellus mi hendrerit risus, vitae luctus lorem dolor eu libero. Morbi a hendrerit libero. Nullam ac pharetra ante. Nam accumsan eros vitae enim bibendum egestas. Proin malesuada diam et augue ultricies a accumsan quam lacinia. Integer non nulla id purus pretium ultrices. Praesent non magna ac ante consequat convallis. Morbi elementum velit sit amet diam interdum quis egestas felis porta. Nullam et nisi massa. Donec ut tellus erat, quis aliquam dui. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Phasellus viverra tempus venenatis. Aenean euismod mollis leo, a ultricies lacus euismod sed. Nunc hendrerit dui non mauris pellentesque vitae eleifend nunc elementum. Praesent viverra euismod mauris vel mollis. Sed vel est est.</p><p>Mauris scelerisque dapibus nisi. Fusce ut mi eget leo tincidunt fermentum. Sed dapibus consequat tortor, quis dapibus purus tincidunt quis. Nulla vitae felis dignissim nisl ultricies ornare vitae eu purus. Integer nec sapien sed metus mollis cursus sed tincidunt tortor. Curabitur sagittis, augue eu tristique ultricies, magna velit elementum nibh, in rhoncus diam mi at sapien. Nam sed diam ut lorem feugiat malesuada. Nunc porta ullamcorper erat vitae faucibus. Sed vehicula ipsum et lectus sagittis vel lacinia neque mattis. Maecenas consectetur dui eu nisi auctor pharetra. Donec lobortis enim et sem pulvinar quis blandit nisl consequat. Quisque ligula tellus, sagittis vel accumsan vulputate, congue sit amet nulla. Proin mattis, purus ultrices molestie faucibus, ante quam venenatis turpis, vel porta turpis nisl sit amet arcu. Sed ullamcorper hendrerit faucibus. Pellentesque et est eu elit euismod varius. Proin adipiscing dolor non mi consequat lacinia dictum mauris scelerisque.</p>"
     }
     ];
+
+    $('a.project').click(function(event) {
+        var link = $(this).attr('href');
+        var id = link.match(/^\/projects\/(.*)$/);
+        // find data item such that data.id === id;
+        for (var i = 0; i < data.length; i++) {
+            project = data[i];
+            if (project._id === id) {
+                break;
+            }
+        }
+        console.log(project);
+        console.log(link.match(/^\/projects\/(.*)$/)[1]);
+        console.log("link " + $(this).attr('href') + " has been clicked!");
+        event.preventDefault();
+    });
 })(jQuery);
