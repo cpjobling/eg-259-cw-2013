@@ -184,26 +184,24 @@
     }
     ];
     
-    var Project = new Backbone.Model.extend({
+    var Project = Backbone.Model.extend({
         // Add any code you need here
     });
     
-    var ProjectList = new Backbone.Collection.extend({
+    var ProjectList = Backbone.Collection.extend({
         
-        model: Project 
+        model: Project,
         
         // Save all of the project items under the `"app name s-number-project-list"` namespace.
-        localstore: Backbone.localStore('pselectr-123456-project-list');
-        
+        localStorage: new Backbone.LocalStorage('pselctr-123456-project-list'),
+
         url: '/api/projects'
     });
 
     // create projects from provided data 
     var projectList = new ProjectList(data);
-    // save to collection ... initially localStorage later the web!
-    projectList.save();
     console.log(projectList);
-    console.log(projectList.get(1));
+    console.log(projectList.get(1).get('title'));
     
     // You can probably discard the rest of this code ....
     
