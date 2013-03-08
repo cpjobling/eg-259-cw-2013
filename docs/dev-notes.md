@@ -11,7 +11,7 @@ Then fetch and merge the latest updates:
     git merge upstream/master
 
 As we will be using Backbone.js, it will be a good idea to have access to the [Backbone.js
-documentation](http://backbonejs.org/}) to hand.
+documentation](http://backbonejs.org/) to hand.
 
 It would also be good to download a developer version of Backbone.js and its dependencies. I suggest
 that we store these in ``js/vendor`` in your forked copy of the project.
