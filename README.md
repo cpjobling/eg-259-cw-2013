@@ -87,7 +87,7 @@ Simply chose a URL where you wish your app to be. I suggest something like ``/ps
 
 This command will create a new folder ``eg-259-vm/web/pselectr_student_number`` in your web space, initialize a git repository, download a copy of the cloned ``eg-259-cw-2013`` repository from GitHub, checkout the master branch and make a record of this repository as a submodule of your copy of the ``eg-259-vm project``. 
 
-You will now have an independent GitHub repository inside your copy of the EG-259 virtual machine which allows you to develop and version control your web app indepdentantly of the ``eg-259-vm`` repository. You will want to check-in the changed ``.gitmodules`` file (note that this file name starts with a period, and so is hidden on Mac and Linux machines) which you can do by issuing these commands:
+You will now have an independent Git repository inside your copy of the EG-259 virtual machine which allows you to develop and version control your web app indepdentantly of the ``eg-259-vm`` repository. You will want to check-in the changed ``.gitmodules`` file (note that this file name starts with a period, and so is hidden on Mac and Linux machines) which you can do by issuing these commands:
 
     $ ~/eg-259-vm/web> git add ../.gitmodules
     $ ~/eg-259-vm/web> git commit -m "Add eg-259-cw-2013 as submodule"
@@ -111,7 +111,7 @@ The *only* resources that will be assessed will be your version of *index.html* 
 
 for this exercise there are 15% of the 25% available for Coursework in EG-259. An additional 5%  will be awarded for successfully creating the RESTful API for the back-end and 5% is awarded to your engagement with PeerWise.
 
-**Your assistance in coming up with a fair marking scheme would be appreciated**.
+**Your assistance in coming up with a [fair marking scheme](assessment-criteria.md) would be appreciated**.
 
 ### References
 
