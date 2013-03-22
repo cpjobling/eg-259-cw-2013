@@ -80,10 +80,9 @@ For windows users, executing the command file ``.\bin\server.bat`` from the Comm
 
 You can of course deploy your version of the Web App by copying the source files into the ``web`` folder (or one of its subfolders) on your copy of the EG-259 Virtual Machine. You can enjoy the benefits of this along with version control by using Git Submodules. The set-up is quite straightforward.
 
-Simply chose a URL where you wish your app to be. I suggest something like ``/pselectr_student_number``. Go to the ``web`` folder in your copy of ``eg-259-vm`` and clone your fork of this project as a submodule.
+Simply chose a URL where you wish your app to be. I suggest something like ``/pselectr_student_number``. Go to the your copy of ``eg-259-vm`` and clone your fork of this project as a submodule.
 
-    $ ~/eg-259-vm> cd web
-    $ ~/eg-259-vm/web> git submodule add git:/github.com/your_github_user_name/eg-235-cw-2013.git pselectr_student_number
+    $ ~/eg-259-vm> git submodule add git:/github.com:your_github_user_name/eg-235-cw-2013.git web/pselectr_student_number
 
 This command will create a new folder ``eg-259-vm/web/pselectr_student_number`` in your web space, initialize a git repository, download a copy of the cloned ``eg-259-cw-2013`` repository from GitHub, checkout the master branch and make a record of this repository as a submodule of your copy of the ``eg-259-vm project``. 
 
