@@ -15,7 +15,7 @@
 // data will be a restful API that will return the JSon to us.
     data = [
 // The array `data` is an array of *projects*.
-// Each project has an `_id`, `title`, `discipline`, `supervisor`
+// Each project has an `id`, `title`, `discipline`, `supervisor`
 // (another object), and a `description`.
     {
         id: 1,
@@ -202,29 +202,64 @@
     }
     ];
     
+    // ## Define models and collections
+    // The `Project` represents an indivdual project. This should be read-only in this app.
+    // Expect to display project titles in the project list (*master* view) and descriptions 
+    // in the detail view, but your users will not need to edit the project information.  
     var Project = Backbone.Model.extend({
-        // Add any code you need here
+        // Add any additional code you need here
     });
     
+    // The `ProjectList` is the list of available projects that is loaded at the start of the
+    // app.
     var ProjectList = Backbone.Collection.extend({
-        
+        // The model is `Project`
         model: Project,
         
-        // Save all of the project items under the `"app name s-number-project-list"` namespace.
+        // In this version of the client, we will save all of the project items 
+        // in [HTML5 local storage](http://docs.webplatform.org/wiki/apis/web-storage/Storage/localStorage)
+        // under the `"app name s-number-project-list"` namespace.
         localStorage: new Backbone.LocalStorage('pselctr-123456-project-list'),
 
+        // The URL represents the RESTful endpoint for the client-server app. It's only a placeholder
+        // for now but all client-side URLs (for example as defined in the router) will be prefixed
+        // with this string.
         url: '/api/projects'
     });
 
-    // create projects from provided data 
+    // In this version, we create projects from the provided test data 
     var projectList = new ProjectList(data);
+    // and check that it is loaded correctly
     console.log(projectList);
-    console.log(projectList.get(1).get('title'));
+    console.log(projectList.get(10).get('title'));
     
-    // You can probably discard the rest of this code ....
+// ## What's next
+// We recommend that you start with the easy bit first:
+//
+// * Create a list view/list item template for the project list
+// * Create a detail view/detail template for an individual project
+// * Create a home view that has the master and detail view
+// * Create a router so that when user clicks on a link in the listview,
+//   the corresponding detail view is shown.
+//
+// This will be quite similar to the example shown in the lecture on Backbone.js.
+// 
+// Once this is complete you can move on to satisfy the [rest of the specification](https://github.com/cpjobling/eg-259-cw-2013#the-task).
+//
+// ## Suggestions
+//
+//   * Maintain a seperate list of projects that have been selected. It is very easy to
+//     move a project from the `ProjectList` to the `SelectedProjectList`
+//   * The project `id` is the key to fiding and retrieving project descriptions.
+//   * Don't add any attributes to `Project`, keep state information in the collections.
+//   * Only the `SelectedProjectList` will be stored when the submit button is pressed.
+
+    // We developed this code in an earlier interation to illustrate jQuety/
+    // As you will be developing a Backbone.js app consisting of models, collections,
+    // views and templates, you can probably discard the rest of this code ....
     
     // Find a project that matches the given id. Assumes each data object has a field
-    // called '_id'
+    // called 'id'
     var find_by_id = function(data,id) {
         for (var i = 0; i < data.length; i++) {
             obj = data[i];
@@ -246,8 +281,5 @@
         console.log(project);
     });
 
-<<<<<<< HEAD
 // Close the anonymous function, and call it passing `jQuery` as the argument.
-=======
->>>>>>> 86c66dee4fdae0ff01b4b1b158498c9fd13386c7
 })(jQuery);
