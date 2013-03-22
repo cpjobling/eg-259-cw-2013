@@ -17,13 +17,17 @@ Subject to negotiation.
 
 4. The default action should not happen -- if it does, as the button is actually a link, this would result in a full page refresh and automatically violate requirement 2.
 
+**[30 marks]**
+
 ### A *project selection feature* has been implemented.
-1. The user can select a projects d
+1. The user can select a projects that
 she/he is interested in either using a checkbox as per the prototype or by some other mechanism, e.g. a double-click on the project title. 
 
 2. The selection should be acknowledged by changing the colour of the selected project. 
 
 3. If an already selected is selected again, it should change back to unselected and return the colour to the default.
+
+**[20 marks]**
 
 ### *A selection sorter has been implemented*. 
 1. Students can use the "Order selected projects" button to go into sort mode (See [order.html](order.html) in the prototype). 
@@ -37,11 +41,14 @@ she/he is interested in either using a checkbox as per the prototype or by some 
 3. This view will have a "New selection" button that takes the user the original selection view.
 5. The new selection view probably should have the original list at the top and the remaining unselected projects at the bottom as shown in the dummy [new-selection.html](new-selection.html) page.
 
+**[30 marks]**
+
 ## Possible Refinements
 
 * The selection and sorting views could be combined in a single page. For example, as you make selections, the selected titles could move into a "sorting box". 
 * There might be a control to unselect items in the sortable view.
 
+**[20 marks]**
 ## Over To You
 
 You are invited to provide a mark for each of these items or adjust the assessment criteria.
