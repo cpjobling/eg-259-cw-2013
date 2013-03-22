@@ -1,7 +1,11 @@
 // # PSELECTR
-// -- a User Interface for Selecting Projects
+// -- *a web app for selecting Undergraduate Projects*
 //
-// To see the formatted version of this open [/docs/main.html](/docs/main.html).
+// This file has been documented in [Markdown](http://daringfireball.net/projects/markdown/) 
+// using Jeffrey Ashkenas's *Docco* system.
+// To see the formatted version of this file open [/docs/main.html](/docs/main.html).
+// To generate your own copy of the documentation you will need to install [node.js](http://nodejs.org/)
+// and the [docco package](http://jashkenas.github.com/docco/). See the docco docs for instructions.
 
 // ## The Program
 // Wrap entire program as a self calling anonymous function and pass
