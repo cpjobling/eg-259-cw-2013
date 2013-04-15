@@ -22,10 +22,10 @@
                 <a class="pilcrow" href="#section-1">&#182;</a>
               </div>
               <h1>PSELECTR</h1>
-<p>-- a User Interface for Selecting Projects</p>
+<p>-- <em>a web app for selecting Undergraduate Projects</em></p>
 <p>This file has been documented in <a href="http://daringfireball.net/projects/markdown/">Markdown</a> 
 using Jeffrey Ashkenas&#39;s <em>Docco</em> system.
-To see the formatted version of this open <a href="/docs/main.html">/docs/main.html</a>.
+To see the formatted version of this file open <a href="/docs/main.html">/docs/main.html</a>.
 To generate your own copy of the documentation you will need to install <a href="http://nodejs.org/">node.js</a>
 and the <a href="http://jashkenas.github.com/docco/">docco package</a>. See the docco docs for instructions.</p>
 <h2>The Program</h2>
@@ -49,7 +49,7 @@ jQuery will be available in the scope of our program.</p>
               <h2>The data</h2>
 <p>Here we define some dummy data that we can work with while we are
 developing the client-side behaviour. Eventually, the source of this
-data will be a restful API that will return the JSon to us.</p>
+data will be a restful API that will return the JSON to us.</p>
 
             </div>
             
@@ -417,8 +417,133 @@ with this string.</p>
 the corresponding detail view is shown.</li>
 </ul>
 <p>This will be quite similar to the example shown in the lecture on Backbone.js.</p>
-<p>Once this is complete you can move on to satisfy the <a href="https://github.com/cpjobling/eg-259-cw-2013#the-task">rest of the specification</a>.</p>
-<h2>Suggestions</h2>
+<p>Once this is complete you can move on to satisfy the 
+<a href="https://github.com/cpjobling/eg-259-cw-2013#the-task">rest of the specification</a>.</p>
+<h3>The Home View</h3>
+<p>Serves as a container for the top-level template</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="keyword">var</span> HomeView = Backbone.View.extend({</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-14">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-14">&#182;</a>
+              </div>
+              <p>attach view to the body element.     </p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        el: <span class="string">'#app'</span>,</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-15">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-15">&#182;</a>
+              </div>
+              <p>The template is the container for the entire app.
+It is defined in the <code>&lt;script id=&quot;item-home&quot;&gt;</code> element.    </p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        initialize: <span class="function"><span class="keyword">function</span> <span class="params">()</span> {</span>
+            console.log($(<span class="string">'#item-home'</span>).html());
+            <span class="keyword">this</span>.template =_.template($(<span class="string">'#item-home'</span>).html());
+            console.log(<span class="keyword">this</span>.template);
+            <span class="keyword">this</span>.render();
+            console.log(<span class="keyword">this</span>.render())
+        },</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-16">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-16">&#182;</a>
+              </div>
+              <p>The render function for this view. Returns the DOM
+that represents the whole view, but does not cause
+the browser to insert into the DOM just yet.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        render: <span class="keyword">function</span>() {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-17">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-17">&#182;</a>
+              </div>
+              <p><code>el</code> is the jQuery version of the current view&#39;s element
+that is the <code>&lt;div id=&quot;app&quot;&gt;</code> tag.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="keyword">var</span> el = <span class="keyword">this</span>.$el</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-18">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-18">&#182;</a>
+              </div>
+              <p>Clear the element then append the contents of the template.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            el.empty();
+            el.append(<span class="keyword">this</span>.template());</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-19">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-19">&#182;</a>
+              </div>
+              <p>Create a view for the list of projects 
+var availableProjectsListView = new ListView({collection: projectList});
+add the rendered content as a <code>&lt;span class=&quot;span4&quot;&gt;</code> element
+$(&#39;.span4&#39;).append(ListView.render().el());
+return <code>this</code>, allows method chaining later</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="keyword">return</span> <span class="keyword">this</span>;
+        }
+    });
+    console.log(HomeView);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-20">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-20">&#182;</a>
+              </div>
+              <h2>Suggestions</h2>
 <ul>
 <li>Maintain a seperate list of projects that have been selected. It is very easy to
 move a project from the <code>ProjectList</code> to the <code>SelectedProjectList</code></li>
@@ -435,11 +560,11 @@ views and templates, you can probably discard the rest of this code ....</p>
         </li>
         
         
-        <li id="section-14">
+        <li id="section-21">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-14">&#182;</a>
+                <a class="pilcrow" href="#section-21">&#182;</a>
               </div>
               <p>Find a project that matches the given id. Assumes each data object has a field
 called &#39;id&#39;</p>
@@ -453,11 +578,11 @@ called &#39;id&#39;</p>
         </li>
         
         
-        <li id="section-15">
+        <li id="section-22">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-15">&#182;</a>
+                <a class="pilcrow" href="#section-22">&#182;</a>
               </div>
               <p>do properties of object match the arguments?</p>
 
@@ -470,11 +595,11 @@ called &#39;id&#39;</p>
         </li>
         
         
-        <li id="section-16">
+        <li id="section-23">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-16">&#182;</a>
+                <a class="pilcrow" href="#section-23">&#182;</a>
               </div>
               <p>if we get to here, no match was found</p>
 
@@ -487,11 +612,11 @@ called &#39;id&#39;</p>
         </li>
         
         
-        <li id="section-17">
+        <li id="section-24">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-17">&#182;</a>
+                <a class="pilcrow" href="#section-24">&#182;</a>
               </div>
               <p>Find project that shares id of clicked link</p>
 
@@ -503,22 +628,39 @@ called &#39;id&#39;</p>
         <span class="keyword">var</span> id = (link.match(<span class="regexp">/^\/projects\/(.*)$/</span>))[<span class="number">1</span>];
         project = find_by_id(data, id);
         console.log(project);
+    });
+
+    AppRouter = Backbone.Router.extend({
+
+        routes: {
+            <span class="string">""</span>: <span class="string">"home"</span>
+        },
+
+        home: <span class="function"><span class="keyword">function</span> <span class="params">()</span> {</span>
+            console.log(<span class="string">'home'</span>);
+            <span class="keyword">new</span> HomeView();
+        }
     });</pre></div></div>
             
         </li>
         
         
-        <li id="section-18">
+        <li id="section-25">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-18">&#182;</a>
+                <a class="pilcrow" href="#section-25">&#182;</a>
               </div>
               <p>Close the anonymous function, and call it passing <code>jQuery</code> as the argument.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>})(jQuery);</pre></div></div>
+            <div class="content"><div class='highlight'><pre>})(jQuery);
+
+$(document).ready(<span class="function"><span class="keyword">function</span> <span class="params">()</span> {</span>
+    projectApp = <span class="keyword">new</span> AppRouter();
+    Backbone.history.start();
+});</pre></div></div>
             
         </li>
         
