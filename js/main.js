@@ -16,7 +16,7 @@
 // ## The data
 // Here we define some dummy data that we can work with while we are
 // developing the client-side behaviour. Eventually, the source of this
-// data will be a restful API that will return the JSon to us.
+// data will be a restful API that will return the JSON to us.
     data = [
 // The array `data` is an array of *projects*.
 // Each project has an `id`, `title`, `discipline`, `supervisor`
@@ -248,7 +248,8 @@
 //
 // This will be quite similar to the example shown in the lecture on Backbone.js.
 // 
-// Once this is complete you can move on to satisfy the [rest of the specification](https://github.com/cpjobling/eg-259-cw-2013#the-task).
+// Once this is complete you can move on to satisfy the 
+// [rest of the specification](https://github.com/cpjobling/eg-259-cw-2013#the-task).
 //
 // ## Suggestions
 //
