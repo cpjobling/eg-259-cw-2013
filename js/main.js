@@ -228,7 +228,7 @@
         // The URL represents the RESTful endpoint for the client-server app. It's only a placeholder
         // for now but all client-side URLs (for example as defined in the router) will be prefixed
         // with this string.
-        url: '/api/projects'
+        url: '/projects'
     });
 
     // In this version, we create projects from the provided test data 
@@ -264,6 +264,8 @@
             this.collection.bind('all', this.render, this);
             this.template = _.template($('#project-list').html());
         },
+
+
 // Renders each element of the list -- creates a menu
         render: function (eventName) {
             var template = this.template,
@@ -280,6 +282,28 @@
         }
     });
 
+// ## The Detail View
+// Rendered to right of list
+    var ProjectView = Backbone.View.extend({
+
+        className: "span8",
+        tagName: "div",
+
+        initialize: function () {
+            this.template = _.template($('#project-show').html());
+            this.model = this.options.model;
+            this.render();
+        },
+
+        render: function () {
+            $('.span8').remove();
+            $(this.el).html(this.template(this.model.toJSON()));
+            console.log(this.el);
+            $('.row-fluid').append(this.el);
+            return this;
+        },
+
+    });
 // ### The Home View
 // Serves as a container for the top-level template
     var HomeView = Backbone.View.extend({
@@ -304,8 +328,6 @@
 // Create a view for the list of projects 
             var availableProjectsListView = new ListView({collection: projectList});
 // Replace the `<ul id="p-list"></ul>` element, with the rendered list
-            //pList = $('ul#p-list')
-            //pList.empty();
             $("#p-list").append(availableProjectsListView.render().el);
 // return `this`, allows method chaining later
             return this;
@@ -350,12 +372,25 @@
     AppRouter = Backbone.Router.extend({
 
         routes: {
-            "": "home"
+            "": "home",
+            "projects/:id" : "show"
         },
 
         home: function () {
             console.log('home');
             new HomeView();
+        },
+
+        show: function(e) {
+            console.log("show " + e);
+            this.toggleStyles(e);
+            project = projectList.get(e);
+            new ProjectView({model: project});
+        },
+
+        toggleStyles: function(e) {
+            $(".project.btn.btn-info").removeClass("btn-info");
+            $('a[href$="' + e + '"]').addClass("btn-info");
         }
     });
 

@@ -109,6 +109,19 @@
             </ul>
         </script>
 
+        <script id="project-show" type="text/template">
+            <h2><%= title %></h2>
+            <p><strong>For discipline</strong>: <%= discipline %>
+            <%= description %>
+            <p>
+                <strong>Supervisor</strong>: 
+                <%= supervisor.name %> 
+                (<%= supervisor.email %>),<br>
+                <%= supervisor.centre.name %> 
+                ( <%= supervisor.centre.code %> ).
+            </p>
+        </script>
+
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.js"><\/script>')</script>
 
