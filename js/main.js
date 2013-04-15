@@ -377,17 +377,19 @@
         },
 
         home: function () {
-            console.log('home');
             new HomeView();
         },
 
-        show: function(e) {
-            console.log("show " + e);
-            this.toggleStyles(e);
-            project = projectList.get(e);
+        show: function(id) {
+// Seem to have to reconstruct HomeView to allow "deep-linking"
+            new HomeView();            
+            this.toggleStyles(id);
+            project = projectList.get(id);
             new ProjectView({model: project});
         },
-
+// Toggle styles ... uses jQuery to find element(s) that were selected and
+// remove the "selected" class, then add the "selected" class to the button
+// that is selected
         toggleStyles: function(e) {
             $(".project.btn.btn-info").removeClass("btn-info");
             $('a[href$="' + e + '"]').addClass("btn-info");
