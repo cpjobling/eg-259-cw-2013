@@ -233,9 +233,6 @@
 
     // In this version, we create projects from the provided test data 
     var projectList = new ProjectList(data);
-    // and check that it is loaded correctly
-    console.log(projectList);
-    console.log(projectList.get(10).get('title'));
     
 // ## What's next
 // We recommend that you start with the easy bit first:
@@ -333,42 +330,8 @@
             return this;
         }
     });
-    console.log(HomeView);
-// ## Suggestions
-//
-//   * Maintain a seperate list of projects that have been selected. It is very easy to
-//     move a project from the `ProjectList` to the `SelectedProjectList`
-//   * The project `id` is the key to fiding and retrieving project descriptions.
-//   * Don't add any attributes to `Project`, keep state information in the collections.
-//   * Only the `SelectedProjectList` will be stored when the submit button is pressed.
 
-    // We developed this code in an earlier interation to illustrate jQuety/
-    // As you will be developing a Backbone.js app consisting of models, collections,
-    // views and templates, you can probably discard the rest of this code ....
-    
-    // Find a project that matches the given id. Assumes each data object has a field
-    // called 'id'
-    var find_by_id = function(data,id) {
-        for (var i = 0; i < data.length; i++) {
-            obj = data[i];
-            // do properties of object match the arguments?
-            if (obj.id == id) {
-                return obj;
-            }
-            // if we get to here, no match was found
-        }
-        console.warn("find_by_id - couldn't find object with _id: " + id);
-    }
-
-    // Find project that shares id of clicked link
-    $('a.project').click(function(event) {
-        event.preventDefault();
-        var link = $(this).attr('href');
-        var id = (link.match(/^\/projects\/(.*)$/))[1];
-        project = find_by_id(data, id);
-        console.log(project);
-    });
-
+// ### The Router
     AppRouter = Backbone.Router.extend({
 
         routes: {
@@ -392,9 +355,18 @@
 // that is selected
         toggleStyles: function(e) {
             $(".project.btn.btn-info").removeClass("btn-info");
-            $('a[href$="' + e + '"]').addClass("btn-info");
+            $('a[href$="projects/' + e + '"]').addClass("btn-info");
         }
     });
+
+// ## Suggestions
+//
+//   * Maintain a seperate list of projects that have been selected. It is very easy to
+//     move a project from the `ProjectList` to the `SelectedProjectList`
+//   * The project `id` is the key to fiding and retrieving project descriptions.
+//   * Don't add any attributes to `Project`, keep state information in the collections.
+//   * Only the `SelectedProjectList` will be stored when the submit button is pressed.
+    
 
 
 // Close the anonymous function, and call it passing `jQuery` as the argument.

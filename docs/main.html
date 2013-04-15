@@ -364,7 +364,7 @@ with this string.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>        url: <span class="string">'/api/projects'</span>
+            <div class="content"><div class='highlight'><pre>        url: <span class="string">'/projects'</span>
     });</pre></div></div>
             
         </li>
@@ -388,24 +388,8 @@ with this string.</p>
         <li id="section-12">
             <div class="annotation">
               
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-12">&#182;</a>
-              </div>
-              <p>and check that it is loaded correctly</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>    console.log(projectList);
-    console.log(projectList.get(<span class="number">10</span>).get(<span class="string">'title'</span>));</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-13">
-            <div class="annotation">
-              
               <div class="pilwrap for-h2">
-                <a class="pilcrow" href="#section-13">&#182;</a>
+                <a class="pilcrow" href="#section-12">&#182;</a>
               </div>
               <h2>What&#39;s next</h2>
 <p>We recommend that you start with the easy bit first:</p>
@@ -419,12 +403,29 @@ the corresponding detail view is shown.</li>
 <p>This will be quite similar to the example shown in the lecture on Backbone.js.</p>
 <p>Once this is complete you can move on to satisfy the 
 <a href="https://github.com/cpjobling/eg-259-cw-2013#the-task">rest of the specification</a>.</p>
-<h3>The Home View</h3>
-<p>Serves as a container for the top-level template</p>
+<h3>The (initial) project list view</h3>
+<p>Acts as the navigation for browsing projects and selecting
+projects for sorting</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    <span class="keyword">var</span> HomeView = Backbone.View.extend({</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    <span class="keyword">var</span> ListView = Backbone.View.extend({</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-13">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-13">&#182;</a>
+              </div>
+              <p>Extracted from original dummy project view</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        tagName: <span class="string">'ul'</span>,
+        id: <span class="string">'p-list'</span>,</pre></div></div>
             
         </li>
         
@@ -435,11 +436,15 @@ the corresponding detail view is shown.</li>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-14">&#182;</a>
               </div>
-              <p>attach view to the body element.     </p>
+              <p>Initialize the view by assigning events to content and initializing
+the template</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>        el: <span class="string">'#app'</span>,</pre></div></div>
+            <div class="content"><div class='highlight'><pre>        initialize: <span class="function"><span class="keyword">function</span> <span class="params">()</span> {</span>
+            <span class="keyword">this</span>.collection.bind(<span class="string">'all'</span>, <span class="keyword">this</span>.render, <span class="keyword">this</span>);
+            <span class="keyword">this</span>.template = _.template($(<span class="string">'#project-list'</span>).html());
+        },</pre></div></div>
             
         </li>
         
@@ -450,18 +455,24 @@ the corresponding detail view is shown.</li>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-15">&#182;</a>
               </div>
-              <p>The template is the container for the entire app.
-It is defined in the <code>&lt;script id=&quot;item-home&quot;&gt;</code> element.    </p>
+              <p>Renders each element of the list -- creates a menu</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>        initialize: <span class="function"><span class="keyword">function</span> <span class="params">()</span> {</span>
-            console.log($(<span class="string">'#item-home'</span>).html());
-            <span class="keyword">this</span>.template =_.template($(<span class="string">'#item-home'</span>).html());
-            console.log(<span class="keyword">this</span>.template);
-            <span class="keyword">this</span>.render();
-            console.log(<span class="keyword">this</span>.render())
-        },</pre></div></div>
+            <div class="content"><div class='highlight'><pre>        render: <span class="function"><span class="keyword">function</span> <span class="params">(eventName)</span> {</span>
+            <span class="keyword">var</span> template = <span class="keyword">this</span>.template,
+                      el = <span class="keyword">this</span>.$el,
+              collection = <span class="keyword">this</span>.collection;
+
+            $(<span class="string">"#p-list"</span>).empty();
+
+            collection.each(<span class="function"><span class="keyword">function</span> <span class="params">(project)</span> {</span>
+                $(<span class="string">"#p-list"</span>).append(template(project.toJSON()));
+            });
+
+            <span class="keyword">return</span> <span class="keyword">this</span>;
+        }
+    });</pre></div></div>
             
         </li>
         
@@ -469,8 +480,93 @@ It is defined in the <code>&lt;script id=&quot;item-home&quot;&gt;</code> elemen
         <li id="section-16">
             <div class="annotation">
               
-              <div class="pilwrap ">
+              <div class="pilwrap for-h2">
                 <a class="pilcrow" href="#section-16">&#182;</a>
+              </div>
+              <h2>The Detail View</h2>
+<p>Rendered to right of list</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="keyword">var</span> ProjectView = Backbone.View.extend({
+
+        className: <span class="string">"span8"</span>,
+        tagName: <span class="string">"div"</span>,
+
+        initialize: <span class="function"><span class="keyword">function</span> <span class="params">()</span> {</span>
+            <span class="keyword">this</span>.template = _.template($(<span class="string">'#project-show'</span>).html());
+            <span class="keyword">this</span>.model = <span class="keyword">this</span>.options.model;
+            <span class="keyword">this</span>.render();
+        },
+
+        render: <span class="function"><span class="keyword">function</span> <span class="params">()</span> {</span>
+            $(<span class="string">'.span8'</span>).remove();
+            $(<span class="keyword">this</span>.el).html(<span class="keyword">this</span>.template(<span class="keyword">this</span>.model.toJSON()));
+            console.log(<span class="keyword">this</span>.el);
+            $(<span class="string">'.row-fluid'</span>).append(<span class="keyword">this</span>.el);
+            <span class="keyword">return</span> <span class="keyword">this</span>;
+        },
+
+    });</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-17">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h3">
+                <a class="pilcrow" href="#section-17">&#182;</a>
+              </div>
+              <h3>The Home View</h3>
+<p>Serves as a container for the top-level template</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="keyword">var</span> HomeView = Backbone.View.extend({</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-18">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-18">&#182;</a>
+              </div>
+              <p>attach view to the body element.     </p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        el: <span class="string">'#app'</span>,</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-19">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-19">&#182;</a>
+              </div>
+              <p>The template is the container for the entire app.
+It is defined in the <code>&lt;script id=&quot;item-home&quot;&gt;</code> element.    </p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        initialize: <span class="function"><span class="keyword">function</span> <span class="params">()</span> {</span>
+            <span class="keyword">this</span>.template =_.template($(<span class="string">'#item-home'</span>).html());
+            <span class="keyword">this</span>.render();
+        },</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-20">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-20">&#182;</a>
               </div>
               <p>The render function for this view. Returns the DOM
 that represents the whole view, but does not cause
@@ -483,13 +579,13 @@ the browser to insert into the DOM just yet.</p>
         </li>
         
         
-        <li id="section-17">
+        <li id="section-21">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-17">&#182;</a>
+                <a class="pilcrow" href="#section-21">&#182;</a>
               </div>
-              <p><code>el</code> is the jQuery version of the current view&#39;s element
+              <p><code>$el</code> is the jQuery version of the current view&#39;s element
 that is the <code>&lt;div id=&quot;app&quot;&gt;</code> tag.</p>
 
             </div>
@@ -499,11 +595,11 @@ that is the <code>&lt;div id=&quot;app&quot;&gt;</code> tag.</p>
         </li>
         
         
-        <li id="section-18">
+        <li id="section-22">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-18">&#182;</a>
+                <a class="pilcrow" href="#section-22">&#182;</a>
               </div>
               <p>Clear the element then append the contents of the template.</p>
 
@@ -515,99 +611,17 @@ that is the <code>&lt;div id=&quot;app&quot;&gt;</code> tag.</p>
         </li>
         
         
-        <li id="section-19">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-19">&#182;</a>
-              </div>
-              <p>Create a view for the list of projects 
-var availableProjectsListView = new ListView({collection: projectList});
-add the rendered content as a <code>&lt;span class=&quot;span4&quot;&gt;</code> element
-$(&#39;.span4&#39;).append(ListView.render().el());
-return <code>this</code>, allows method chaining later</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>            <span class="keyword">return</span> <span class="keyword">this</span>;
-        }
-    });
-    console.log(HomeView);</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-20">
-            <div class="annotation">
-              
-              <div class="pilwrap for-h2">
-                <a class="pilcrow" href="#section-20">&#182;</a>
-              </div>
-              <h2>Suggestions</h2>
-<ul>
-<li>Maintain a seperate list of projects that have been selected. It is very easy to
-move a project from the <code>ProjectList</code> to the <code>SelectedProjectList</code></li>
-<li>The project <code>id</code> is the key to fiding and retrieving project descriptions.</li>
-<li>Don&#39;t add any attributes to <code>Project</code>, keep state information in the collections.</li>
-<li>Only the <code>SelectedProjectList</code> will be stored when the submit button is pressed.</li>
-</ul>
-<p>We developed this code in an earlier interation to illustrate jQuety/
-As you will be developing a Backbone.js app consisting of models, collections,
-views and templates, you can probably discard the rest of this code ....</p>
-
-            </div>
-            
-        </li>
-        
-        
-        <li id="section-21">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-21">&#182;</a>
-              </div>
-              <p>Find a project that matches the given id. Assumes each data object has a field
-called &#39;id&#39;</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>    <span class="keyword">var</span> find_by_id = <span class="keyword">function</span>(data,id) {
-        <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; data.length; i++) {
-            obj = data[i];</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-22">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-22">&#182;</a>
-              </div>
-              <p>do properties of object match the arguments?</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>            <span class="keyword">if</span> (obj.id == id) {
-                <span class="keyword">return</span> obj;
-            }</pre></div></div>
-            
-        </li>
-        
-        
         <li id="section-23">
             <div class="annotation">
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-23">&#182;</a>
               </div>
-              <p>if we get to here, no match was found</p>
+              <p>Create a view for the list of projects </p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>        }
-        console.warn(<span class="string">"find_by_id - couldn't find object with _id: "</span> + id);
-    }</pre></div></div>
+            <div class="content"><div class='highlight'><pre>            <span class="keyword">var</span> availableProjectsListView = <span class="keyword">new</span> ListView({collection: projectList});</pre></div></div>
             
         </li>
         
@@ -618,29 +632,11 @@ called &#39;id&#39;</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-24">&#182;</a>
               </div>
-              <p>Find project that shares id of clicked link</p>
+              <p>Replace the <code>&lt;ul id=&quot;p-list&quot;&gt;&lt;/ul&gt;</code> element, with the rendered list</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    $(<span class="string">'a.project'</span>).click(<span class="keyword">function</span>(event) {
-        event.preventDefault();
-        <span class="keyword">var</span> link = $(<span class="keyword">this</span>).attr(<span class="string">'href'</span>);
-        <span class="keyword">var</span> id = (link.match(<span class="regexp">/^\/projects\/(.*)$/</span>))[<span class="number">1</span>];
-        project = find_by_id(data, id);
-        console.log(project);
-    });
-
-    AppRouter = Backbone.Router.extend({
-
-        routes: {
-            <span class="string">""</span>: <span class="string">"home"</span>
-        },
-
-        home: <span class="function"><span class="keyword">function</span> <span class="params">()</span> {</span>
-            console.log(<span class="string">'home'</span>);
-            <span class="keyword">new</span> HomeView();
-        }
-    });</pre></div></div>
+            <div class="content"><div class='highlight'><pre>            $(<span class="string">"#p-list"</span>).append(availableProjectsListView.render().el);</pre></div></div>
             
         </li>
         
@@ -650,6 +646,109 @@ called &#39;id&#39;</p>
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-25">&#182;</a>
+              </div>
+              <p>return <code>this</code>, allows method chaining later</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="keyword">return</span> <span class="keyword">this</span>;
+        }
+    });</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-26">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h3">
+                <a class="pilcrow" href="#section-26">&#182;</a>
+              </div>
+              <h3>The Router</h3>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    AppRouter = Backbone.Router.extend({
+
+        routes: {
+            <span class="string">""</span>: <span class="string">"home"</span>,
+            <span class="string">"projects/:id"</span> : <span class="string">"show"</span>
+        },
+
+        home: <span class="function"><span class="keyword">function</span> <span class="params">()</span> {</span>
+            <span class="keyword">new</span> HomeView();
+        },
+
+        show: <span class="keyword">function</span>(id) {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-27">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-27">&#182;</a>
+              </div>
+              <p>Seem to have to reconstruct HomeView to allow &quot;deep-linking&quot;</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            <span class="keyword">new</span> HomeView();            
+            <span class="keyword">this</span>.toggleStyles(id);
+            project = projectList.get(id);
+            <span class="keyword">new</span> ProjectView({model: project});
+        },</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-28">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-28">&#182;</a>
+              </div>
+              <p>Toggle styles ... uses jQuery to find element(s) that were selected and
+remove the &quot;selected&quot; class, then add the &quot;selected&quot; class to the button
+that is selected</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        toggleStyles: <span class="keyword">function</span>(e) {
+            $(<span class="string">".project.btn.btn-info"</span>).removeClass(<span class="string">"btn-info"</span>);
+            $(<span class="string">'a[href$="'</span> + e + <span class="string">'"]'</span>).addClass(<span class="string">"btn-info"</span>);
+        }
+    });</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-29">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h2">
+                <a class="pilcrow" href="#section-29">&#182;</a>
+              </div>
+              <h2>Suggestions</h2>
+<ul>
+<li>Maintain a seperate list of projects that have been selected. It is very easy to
+move a project from the <code>ProjectList</code> to the <code>SelectedProjectList</code></li>
+<li>The project <code>id</code> is the key to fiding and retrieving project descriptions.</li>
+<li>Don&#39;t add any attributes to <code>Project</code>, keep state information in the collections.</li>
+<li>Only the <code>SelectedProjectList</code> will be stored when the submit button is pressed.</li>
+</ul>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-30">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-30">&#182;</a>
               </div>
               <p>Close the anonymous function, and call it passing <code>jQuery</code> as the argument.</p>
 
