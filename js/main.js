@@ -251,6 +251,39 @@
 // Once this is complete you can move on to satisfy the 
 // [rest of the specification](https://github.com/cpjobling/eg-259-cw-2013#the-task).
 //
+// ### The Home View
+// Serves as a container for the top-level template
+    var HomeView = Backbone.View.extend({
+// attach view to the body element.     
+        el: '#app',
+// The template is the container for the entire app.
+// It is defined in the `<script id="item-home">` element.    
+        initialize: function () {
+            console.log($('#item-home').html());
+            this.template =_.template($('#item-home').html());
+            console.log(this.template);
+            this.render();
+            console.log(this.render())
+        },
+// The render function for this view. Returns the DOM
+// that represents the whole view, but does not cause
+// the browser to insert into the DOM just yet.
+        render: function() {
+// `el` is the jQuery version of the current view's element
+// that is the `<div id="app">` tag.
+            var el = this.$el
+// Clear the element then append the contents of the template.
+            el.empty();
+            el.append(this.template());
+// Create a view for the list of projects 
+            //var availableProjectsListView = new ListView({collection: projectList});
+// add the rendered content as a `<span class="span4">` element
+            //$('.span4').append(ListView.render().el());
+// return `this`, allows method chaining later
+            return this;
+        }
+    });
+    console.log(HomeView);
 // ## Suggestions
 //
 //   * Maintain a seperate list of projects that have been selected. It is very easy to
@@ -286,5 +319,23 @@
         console.log(project);
     });
 
+    AppRouter = Backbone.Router.extend({
+
+        routes: {
+            "": "home"
+        },
+
+        home: function () {
+            console.log('home');
+            new HomeView();
+        }
+    });
+
+
 // Close the anonymous function, and call it passing `jQuery` as the argument.
 })(jQuery);
+
+$(document).ready(function () {
+    projectApp = new AppRouter();
+    Backbone.history.start();
+});
