@@ -16,10 +16,8 @@ app.ProjectView = Backbone.View.extend({
     },
 
     render: function () {
-        console.log('rendering project view')
         $('.span8').remove();
         $(this.el).html(this.template(this.model.toJSON()));
-        console.log(this.el);
         $('.row-fluid').append(this.el);
         return this;
     },

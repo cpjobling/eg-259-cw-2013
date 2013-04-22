@@ -23,7 +23,6 @@ app.ProjectListItemView = Backbone.View.extend({
     },
 
     render: function() {
-        console.log('rendering project list item view');
         this.$el.html( this.template( this.model.toJSON() ) );
         return this;
     },

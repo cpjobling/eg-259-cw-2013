@@ -19,14 +19,12 @@ app.ProjectListView = Backbone.View.extend({
     },
 
     render: function() {
-        console.log('Rendering project list view');
         this.addAll();
         return this;
     },
 
     addOne: function(project) {
         var view = new app.ProjectListItemView({ model: project});
-        console.log(view);
         $('#p-list').append( view.render().el );
     },
 

@@ -21,7 +21,6 @@ app.HomeView = Backbone.View.extend({
     // that represents the whole view, but does not cause
     // the browser to insert into the DOM just yet.
     render: function() {
-        console.log('Rendering home view');
         // `$el` is the jQuery version of the current view's element
         // that is the `<div id="app">` tag.
         var el = this.$el
