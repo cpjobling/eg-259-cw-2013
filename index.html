@@ -98,7 +98,7 @@
             </footer>
         </script>
 
-        <script id="project-list" type="text/template">
+        <script id="project-list-item" type="text/template">
             <li>
                 <input type="checkbox" name="selected_projects" value="<%= id %>">
                 <a class="project btn" href="#/projects/<%= id %>">
@@ -135,10 +135,11 @@
         <!-- Load our application scripts -->
         <script src="js/data/data.js"></script>
         <script src="js/models/project.js"></script>
-        <script src="js/collections/project_list.js"></script>
-        <script src="js/views/home_view.js"></script>   
+        <script src="js/collections/project_list.js"></script>    
+        <script src="js/views/project_list_item_view.js"></script>
         <script src="js/views/project_list_view.js"></script>
-        <script src="js/views/project_view.js"></script>              
+        <script src="js/views/project_view.js"></script>  
+        <script src="js/views/home_view.js"></script>                
         <script src="js/routers/app_router.js"></script>
         <script src="js/main.js"></script>
     </body>

@@ -1,6 +1,6 @@
 // js/routers/app_router.js
 
-app = app || {};
+var app = app || {};
 
 // ### The Router
 app.AppRouter = Backbone.Router.extend({
@@ -18,7 +18,7 @@ app.AppRouter = Backbone.Router.extend({
 // Seem to have to reconstruct HomeView to allow "deep-linking"
         new app.HomeView();            
         this.toggleStyles(id);
-        project = app.projectList.get(id);
+        project = app.Projects.get(id);
         new app.ProjectView({model: project});
     },
 // Toggle styles ... uses jQuery to find element(s) that were selected and

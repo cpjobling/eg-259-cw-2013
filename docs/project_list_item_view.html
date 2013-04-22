@@ -2,7 +2,7 @@
 
 <html>
 <head>
-  <title>project_list_view.js</title>
+  <title>project_list_item_view.js</title>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
   <link rel="stylesheet" media="all" href="docco.css" />
@@ -76,7 +76,7 @@
         
           <li id="title">
               <div class="annotation">
-                  <h1>project_list_view.js</h1>
+                  <h1>project_list_item_view.js</h1>
               </div>
           </li>
         
@@ -88,7 +88,7 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-1">&#182;</a>
               </div>
-              <p>js/views/project_list_view.js</p>
+              <p>js/views/project_list_item_view.js</p>
 
             </div>
             
@@ -103,13 +103,12 @@
               <div class="pilwrap for-h3">
                 <a class="pilcrow" href="#section-2">&#182;</a>
               </div>
-              <h3>The (initial) project list view</h3>
-<p>Acts as the navigation for browsing projects and selecting
-projects for sorting</p>
+              <h3>The project list item view</h3>
+<p>Renders a single project item</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>app.ProjectListView = Backbone.View.extend({</pre></div></div>
+            <div class="content"><div class='highlight'><pre>app.ProjectListItemView = Backbone.View.extend({</pre></div></div>
             
         </li>
         
@@ -124,8 +123,7 @@ projects for sorting</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    tagName: <span class="string">'ul'</span>,
-    id: <span class="string">'p-list'</span>,</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    tagName: <span class="string">'li'</span>,</pre></div></div>
             
         </li>
         
@@ -136,33 +134,53 @@ projects for sorting</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-4">&#182;</a>
               </div>
+              <p>Cache the template function for a single item.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    template: _.template($(<span class="string">'#project-list-item'</span>).html()),</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>The DOM events specific to an item</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    events: {
+
+    },</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
               <p>Initialize the view by assigning events to content and initializing
 the template</p>
 
             </div>
             
             <div class="content"><div class='highlight'><pre>    initialize: <span class="function"><span class="keyword">function</span> <span class="params">()</span> {</span>
-        <span class="keyword">this</span>.collection.bind(<span class="string">'all'</span>, <span class="keyword">this</span>.render, <span class="keyword">this</span>);
-        <span class="keyword">this</span>.listenTo(app.Projects, <span class="string">'reset'</span>, <span class="keyword">this</span>.addAll);
-        <span class="keyword">this</span>.render();
+        <span class="keyword">this</span>.listenTo(<span class="keyword">this</span>.model, <span class="string">'change'</span>, <span class="keyword">this</span>.render);
     },
 
     render: <span class="keyword">function</span>() {
-        console.log(<span class="string">'Rendering project list view'</span>);
-        <span class="keyword">this</span>.addAll();
+        console.log(<span class="string">'rendering project list item view'</span>);
+        <span class="keyword">this</span>.$el.html( <span class="keyword">this</span>.template( <span class="keyword">this</span>.model.toJSON() ) );
         <span class="keyword">return</span> <span class="keyword">this</span>;
     },
 
-    addOne: <span class="keyword">function</span>(project) {
-        <span class="keyword">var</span> view = <span class="keyword">new</span> app.ProjectListItemView({ model: project});
-        console.log(view);
-        $(<span class="string">'#p-list'</span>).append( view.render().el );
-    },
-
-    addAll: <span class="keyword">function</span>() {
-        $(<span class="string">"#p-list"</span>).empty();
-        app.Projects.each(<span class="keyword">this</span>.addOne, <span class="keyword">this</span>);
-    }
 });</pre></div></div>
             
         </li>

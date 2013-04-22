@@ -26,6 +26,7 @@ $(document).ready(function () {
 // * [js/views/home_view.js](home_view.html)
 // * [js/views/project_view.js](project_view.html)
 // * [js/views/project_list_view.js](project_list_view.html)
+// * [js/views/project_list_item_view.js](project_list_item_view.html)
 //
 // ### Routers
 // * [js/views/app_router.js](app_router.html)

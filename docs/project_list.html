@@ -54,6 +54,11 @@
               </a>
             
               
+              <a class="source" href="project_list_item_view.html">
+                project_list_item_view.js
+              </a>
+            
+              
               <a class="source" href="project_list_view.html">
                 project_list_view.js
               </a>
@@ -87,7 +92,7 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>app = app || {};</pre></div></div>
+            <div class="content"><div class='highlight'><pre><span class="keyword">var</span> app = app || {};</pre></div></div>
             
         </li>
         
@@ -103,7 +108,7 @@ app.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>app.ProjectList = Backbone.Collection.extend({</pre></div></div>
+            <div class="content"><div class='highlight'><pre><span class="keyword">var</span> ProjectList = Backbone.Collection.extend({</pre></div></div>
             
         </li>
         
@@ -152,7 +157,7 @@ with this string.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    url: <span class="string">'/projects'</span>
+            <div class="content"><div class='highlight'><pre>    url: <span class="string">'/api/projects'</span>
 });</pre></div></div>
             
         </li>
@@ -168,7 +173,7 @@ with this string.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>app.projectList = <span class="keyword">new</span> app.ProjectList(app.data);</pre></div></div>
+            <div class="content"><div class='highlight'><pre>app.Projects = <span class="keyword">new</span> ProjectList(app.data);</pre></div></div>
             
         </li>
         

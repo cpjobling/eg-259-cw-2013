@@ -1,5 +1,6 @@
 // js/views/project_list_view.js
-app = app || {};
+
+var app = app || {};
 
 // ### The (initial) project list view
 // Acts as the navigation for browsing projects and selecting
@@ -8,27 +9,29 @@ app.ProjectListView = Backbone.View.extend({
 // Extracted from original dummy project view
     tagName: 'ul',
     id: 'p-list',
-    template: _.template($('#project-list').html()),
-
+    
 // Initialize the view by assigning events to content and initializing
 // the template
     initialize: function () {
         this.collection.bind('all', this.render, this);
+        this.listenTo(app.Projects, 'reset', this.addAll);
+        this.render();
     },
 
-
-// Renders each element of the list -- creates a menu
-    render: function (eventName) {
-        var template = this.template,
-                  el = this.$el,
-          collection = this.collection;
-
-        $("#p-list").empty();
-
-        collection.each(function (project) {
-            $("#p-list").append(template(project.toJSON()));
-        });
-
+    render: function() {
+        console.log('Rendering project list view');
+        this.addAll();
         return this;
+    },
+
+    addOne: function(project) {
+        var view = new app.ProjectListItemView({ model: project});
+        console.log(view);
+        $('#p-list').append( view.render().el );
+    },
+
+    addAll: function() {
+        $("#p-list").empty();
+        app.Projects.each(this.addOne, this);
     }
 });

@@ -1,5 +1,5 @@
 // js/models/project.js
-app = app || {};
+var app = app || {};
 
 // ## Define models and collections
 // The `Project` represents an indivdual project. This should be read-only in this app.

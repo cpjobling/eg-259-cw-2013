@@ -54,6 +54,11 @@
               </a>
             
               
+              <a class="source" href="project_list_item_view.html">
+                project_list_item_view.js
+              </a>
+            
+              
               <a class="source" href="project_list_view.html">
                 project_list_view.js
               </a>
@@ -87,7 +92,7 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>app = app || {};</pre></div></div>
+            <div class="content"><div class='highlight'><pre><span class="keyword">var</span> app = app || {};</pre></div></div>
             
         </li>
         
@@ -134,8 +139,9 @@ It is defined in the <code>&lt;script id=&quot;item-home&quot;&gt;</code> elemen
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    initialize: <span class="function"><span class="keyword">function</span> <span class="params">()</span> {</span>
-        <span class="keyword">this</span>.template =_.template($(<span class="string">'#item-home'</span>).html());
+            <div class="content"><div class='highlight'><pre>    template: _.template($(<span class="string">'#item-home'</span>).html()),
+
+    initialize: <span class="function"><span class="keyword">function</span> <span class="params">()</span> {</span>
         <span class="keyword">this</span>.render();
     },</pre></div></div>
             
@@ -154,7 +160,8 @@ the browser to insert into the DOM just yet.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    render: <span class="keyword">function</span>() {</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    render: <span class="keyword">function</span>() {
+        console.log(<span class="string">'Rendering home view'</span>);</pre></div></div>
             
         </li>
         
@@ -201,7 +208,7 @@ that is the <code>&lt;div id=&quot;app&quot;&gt;</code> tag.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>        <span class="keyword">var</span> availableProjectsListView = <span class="keyword">new</span> app.ProjectListView({collection: app.projectList});</pre></div></div>
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">var</span> availableProjectsListView = <span class="keyword">new</span> app.ProjectListView({collection: app.Projects});</pre></div></div>
             
         </li>
         

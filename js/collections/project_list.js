@@ -1,9 +1,10 @@
 // js/collections/project_list.js
-app = app || {};
+
+var app = app || {};
 
 // The `ProjectList` is the list of available projects that is loaded at the start of the
 // app.
-app.ProjectList = Backbone.Collection.extend({
+var ProjectList = Backbone.Collection.extend({
     // The Pmodel is `Project`
     model: app.Project,
     
@@ -15,8 +16,8 @@ app.ProjectList = Backbone.Collection.extend({
     // The URL represents the RESTful endpoint for the client-server app. It's only a placeholder
     // for now but all client-side URLs (for example as defined in the router) will be prefixed
     // with this string.
-    url: '/projects'
+    url: '/api/projects'
 });
 
 // In this version, we create projects from the provided test data 
-app.projectList = new app.ProjectList(app.data);
+app.Projects = new ProjectList(app.data);

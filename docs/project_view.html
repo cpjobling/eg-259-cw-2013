@@ -54,6 +54,11 @@
               </a>
             
               
+              <a class="source" href="project_list_item_view.html">
+                project_list_item_view.js
+              </a>
+            
+              
               <a class="source" href="project_list_view.html">
                 project_list_view.js
               </a>
@@ -87,7 +92,7 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>app = app || {} ;</pre></div></div>
+            <div class="content"><div class='highlight'><pre><span class="keyword">var</span> app = app || {} ;</pre></div></div>
             
         </li>
         
@@ -108,13 +113,15 @@
     className: <span class="string">"span8"</span>,
     tagName: <span class="string">"div"</span>,
 
+    template: _.template($(<span class="string">'#project-show'</span>).html()),
+
     initialize: <span class="function"><span class="keyword">function</span> <span class="params">()</span> {</span>
-        <span class="keyword">this</span>.template = _.template($(<span class="string">'#project-show'</span>).html());
         <span class="keyword">this</span>.model = <span class="keyword">this</span>.options.model;
         <span class="keyword">this</span>.render();
     },
 
     render: <span class="function"><span class="keyword">function</span> <span class="params">()</span> {</span>
+        console.log(<span class="string">'rendering project view'</span>)
         $(<span class="string">'.span8'</span>).remove();
         $(<span class="keyword">this</span>.el).html(<span class="keyword">this</span>.template(<span class="keyword">this</span>.model.toJSON()));
         console.log(<span class="keyword">this</span>.el);
