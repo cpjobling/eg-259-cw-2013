@@ -154,7 +154,7 @@
             </div>
             
             <div class="content"><div class='highlight'><pre>    events: {
-
+        <span class="string">'click [type="checkbox"]'</span>: <span class="string">'selectProject'</span>
     },</pre></div></div>
             
         </li>
@@ -176,10 +176,92 @@ the template</p>
     },
 
     render: <span class="keyword">function</span>() {
-        console.log(<span class="string">'rendering project list item view'</span>);
         <span class="keyword">this</span>.$el.html( <span class="keyword">this</span>.template( <span class="keyword">this</span>.model.toJSON() ) );
         <span class="keyword">return</span> <span class="keyword">this</span>;
     },
+
+    selectProject: <span class="keyword">function</span>() {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>extract checkbox element</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        $checkbox = <span class="keyword">this</span>.$(<span class="string">'[type="checkbox"]'</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-8">&#182;</a>
+              </div>
+              <p>get the associated project id</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        p_id = $checkbox.val();
+        <span class="keyword">if</span> ($checkbox.prop(<span class="string">'checked'</span>)) {
+            alert(<span class="string">'Project '</span> + p_id + <span class="string">'  selected'</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-9">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-9">&#182;</a>
+              </div>
+              <p>TODO: change class of associated button
+add project with id=p_id to selected projects list</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        }
+        <span class="keyword">else</span> {
+            alert(<span class="string">'Project '</span> + p_id + <span class="string">'  de-selected'</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-10">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-10">&#182;</a>
+              </div>
+              <p> was previously selected, restore style
+ remove selected project from selected project list</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-11">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-11">&#182;</a>
+              </div>
+              <p>make order button depend on number of selected projects</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    }
 
 });</pre></div></div>
             

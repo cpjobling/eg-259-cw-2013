@@ -121,10 +121,8 @@
     },
 
     render: <span class="function"><span class="keyword">function</span> <span class="params">()</span> {</span>
-        console.log(<span class="string">'rendering project view'</span>)
         $(<span class="string">'.span8'</span>).remove();
         $(<span class="keyword">this</span>.el).html(<span class="keyword">this</span>.template(<span class="keyword">this</span>.model.toJSON()));
-        console.log(<span class="keyword">this</span>.el);
         $(<span class="string">'.row-fluid'</span>).append(<span class="keyword">this</span>.el);
         <span class="keyword">return</span> <span class="keyword">this</span>;
     },

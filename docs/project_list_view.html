@@ -148,14 +148,12 @@ the template</p>
     },
 
     render: <span class="keyword">function</span>() {
-        console.log(<span class="string">'Rendering project list view'</span>);
         <span class="keyword">this</span>.addAll();
         <span class="keyword">return</span> <span class="keyword">this</span>;
     },
 
     addOne: <span class="keyword">function</span>(project) {
         <span class="keyword">var</span> view = <span class="keyword">new</span> app.ProjectListItemView({ model: project});
-        console.log(view);
         $(<span class="string">'#p-list'</span>).append( view.render().el );
     },
 
