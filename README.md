@@ -114,12 +114,13 @@ for this exercise there are 15% of the 25% available for Coursework in EG-259. A
 
 ### References
 
-1. Addy Osmani and Sindre Sorhus, *TodoMVC*. The same Web App implemented using a range of JavaScript MVC frameworks for the purposes of comparison and evaluation. URL: <http://addyosmani.github.com/todomvc/>.
-2. Backbone.js, A popular and compact JavaScript MVC framework. URL: <http://backbonejs.org/>.
-3. jQuery, a popular JavaScript library which gives a more pleasant API to the DOM and cross-browser support. URL: <http://jquery.com/>
-4. (Twitter) Bootstrap - a popular and widely used CSS and JavaScript framework for creating responsive web apps. Originally developed by engineers at Twitter. Now maintained and supported as an open source project. URL: <http://twitter.github.com/bootstrap/>.
-5. HTML5 Boiler Plate - a starter pack for web apps. URL: <http://html5boilerplate.com/>
-6. Initializr - an interactive tool for creating boilerplate HTML5 projects. Currently supports HTML5 Bolier Plate and Bootstrap. Used as a starting point for this repository. URL: <http://www.initializr.com/>
-7. Scott Chacon, *Pro Git*, Apress, 2009. Available on-line for free in various formats at URL <http://git-scm.com/book>.
-8. *Try Git*, Free on-line game-like interactive tutorial created by [codeschool.com](http://www.codeschool.com) for GitHub. URL: <http://try.github.com/levels/1/challenges/1>.
+1. Addy Osmani, Developing Backbone.js Applications, O'Reilly, 2013 (Estimated). E-book URL: [addyosmani.github.io/backbone-fundamentals/](http://addyosmani.github.io/backbone-fundamentals/). 
+2. Addy Osmani and Sindre Sorhus, *TodoMVC*. The same Web App implemented using a range of JavaScript MVC frameworks for the purposes of comparison and evaluation. URL: <http://addyosmani.github.com/todomvc/>.
+3. Backbone.js, A popular and compact JavaScript MVC framework. URL: <http://backbonejs.org/>.
+4. jQuery, a popular JavaScript library which gives a more pleasant API to the DOM and cross-browser support. URL: <http://jquery.com/>
+5. (Twitter) Bootstrap - a popular and widely used CSS and JavaScript framework for creating responsive web apps. Originally developed by engineers at Twitter. Now maintained and supported as an open source project. URL: <http://twitter.github.com/bootstrap/>.
+6. HTML5 Boiler Plate - a starter pack for web apps. URL: <http://html5boilerplate.com/>
+7. Initializr - an interactive tool for creating boilerplate HTML5 projects. Currently supports HTML5 Bolier Plate and Bootstrap. Used as a starting point for this repository. URL: <http://www.initializr.com/>
+8. Scott Chacon, *Pro Git*, Apress, 2009. Available on-line for free in various formats at URL <http://git-scm.com/book>.
+9. *Try Git*, Free on-line game-like interactive tutorial created by [codeschool.com](http://www.codeschool.com) for GitHub. URL: <http://try.github.com/levels/1/challenges/1>.
 

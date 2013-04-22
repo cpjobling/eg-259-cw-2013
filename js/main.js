@@ -6,6 +6,9 @@
 // To see the formatted version of this file open [/docs/main.html](/docs/main.html).
 // To generate your own copy of the documentation you will need to install [node.js](http://nodejs.org/)
 // and the [docco package](http://jashkenas.github.com/docco/). See the docco docs for instructions.
+//
+// For help on the code see Addy Osmani, Developing Backbone.js Applications, 
+// O'Reilly, 2013 (Estimated). E-book URL: [addyosmani.github.io/backbone-fundamentals/](http://addyosmani.github.io/backbone-fundamentals/). 
 
 // ## The Program
 $(document).ready(function () {
