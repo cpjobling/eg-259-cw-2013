@@ -2,7 +2,7 @@
 
 <html>
 <head>
-  <title>PSELECTR</title>
+  <title>project_view.js</title>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
   <link rel="stylesheet" media="all" href="docco.css" />
@@ -69,29 +69,25 @@
     
     <ul class="sections">
         
+          <li id="title">
+              <div class="annotation">
+                  <h1>project_view.js</h1>
+              </div>
+          </li>
+        
         
         
         <li id="section-1">
             <div class="annotation">
               
-              <div class="pilwrap for-h1">
+              <div class="pilwrap ">
                 <a class="pilcrow" href="#section-1">&#182;</a>
               </div>
-              <h1>PSELECTR</h1>
-<p>-- <em>a web app for selecting Undergraduate Projects</em></p>
-<p>This file has been documented in <a href="http://daringfireball.net/projects/markdown/">Markdown</a> 
-using Jeffrey Ashkenas&#39;s <em>Docco</em> system.
-To see the formatted version of this file open <a href="/docs/main.html">/docs/main.html</a>.
-To generate your own copy of the documentation you will need to install <a href="http://nodejs.org/">node.js</a>
-and the <a href="http://jashkenas.github.com/docco/">docco package</a>. See the docco docs for instructions.</p>
-<h2>The Program</h2>
+              <p>js/views/project_view.js</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>$(document).ready(<span class="function"><span class="keyword">function</span> <span class="params">()</span> {</span>
-    app.PSelectr = <span class="keyword">new</span> app.AppRouter();
-    Backbone.history.start();
-});</pre></div></div>
+            <div class="content"><div class='highlight'><pre>app = app || {} ;</pre></div></div>
             
         </li>
         
@@ -102,40 +98,31 @@ and the <a href="http://jashkenas.github.com/docco/">docco package</a>. See the 
               <div class="pilwrap for-h2">
                 <a class="pilcrow" href="#section-2">&#182;</a>
               </div>
-              <h2>Table of Contents</h2>
-<h3>Models and Data</h3>
-<ul>
-<li>Models: <a href="project.html">js/models/project.js</a></li>
-<li>Data: <a href="data.html">js/data/data.js</a></li>
-</ul>
-<h3>Collections</h3>
-<ul>
-<li>Collections: <a href="project_list.html">js/collections/project_list.js</a></li>
-</ul>
-<h3>Views</h3>
-<ul>
-<li><a href="home_view.html">js/views/home_view.js</a></li>
-<li><a href="project_view.html">js/views/project_view.js</a></li>
-<li><a href="project_list_view.html">js/views/project_list_view.js</a></li>
-</ul>
-<h3>Routers</h3>
-<ul>
-<li><a href="app_router.html">js/views/app_router.js</a></li>
-</ul>
-<h3>Main</h3>
-<ul>
-<li><a href="main.html">js/main.js -- this file</a></li>
-</ul>
-<h2>Suggestions</h2>
-<ul>
-<li>Maintain a seperate list of projects that have been selected. It is very easy to
-move a project from the <code>ProjectList</code> to the <code>SelectedProjectList</code></li>
-<li>The project <code>id</code> is the key to finding and retrieving project descriptions.</li>
-<li>Don&#39;t add any attributes to <code>Project</code>, keep state information in the collections.</li>
-<li>Only the <code>SelectedProjectList</code> will be stored when the submit button is pressed.</li>
-</ul>
+              <h2>The Detail View</h2>
+<p>Rendered to right of list</p>
 
             </div>
+            
+            <div class="content"><div class='highlight'><pre>app.ProjectView = Backbone.View.extend({
+
+    className: <span class="string">"span8"</span>,
+    tagName: <span class="string">"div"</span>,
+
+    initialize: <span class="function"><span class="keyword">function</span> <span class="params">()</span> {</span>
+        <span class="keyword">this</span>.template = _.template($(<span class="string">'#project-show'</span>).html());
+        <span class="keyword">this</span>.model = <span class="keyword">this</span>.options.model;
+        <span class="keyword">this</span>.render();
+    },
+
+    render: <span class="function"><span class="keyword">function</span> <span class="params">()</span> {</span>
+        $(<span class="string">'.span8'</span>).remove();
+        $(<span class="keyword">this</span>.el).html(<span class="keyword">this</span>.template(<span class="keyword">this</span>.model.toJSON()));
+        console.log(<span class="keyword">this</span>.el);
+        $(<span class="string">'.row-fluid'</span>).append(<span class="keyword">this</span>.el);
+        <span class="keyword">return</span> <span class="keyword">this</span>;
+    },
+
+});</pre></div></div>
             
         </li>
         

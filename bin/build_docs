@@ -1,0 +1,4 @@
+#!/bin/sh
+
+echo `pwd`
+docco js/main.js js/models/*.js js/collections/*.js js/models/*.js js/data/data.js js/routers/*.js js/views/*.js

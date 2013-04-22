@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>home_view.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page">
+            
+              
+              <a class="source" href="project_list.html">
+                project_list.js
+              </a>
+            
+              
+              <a class="source" href="data.html">
+                data.js
+              </a>
+            
+              
+              <a class="source" href="main.html">
+                main.js
+              </a>
+            
+              
+              <a class="source" href="project.html">
+                project.js
+              </a>
+            
+              
+              <a class="source" href="project.html">
+                project.js
+              </a>
+            
+              
+              <a class="source" href="app_router.html">
+                app_router.js
+              </a>
+            
+              
+              <a class="source" href="home_view.html">
+                home_view.js
+              </a>
+            
+              
+              <a class="source" href="project_list_view.html">
+                project_list_view.js
+              </a>
+            
+              
+              <a class="source" href="project_view.html">
+                project_view.js
+              </a>
+            
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>home_view.js</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              <p>js/views/home_view.js</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>app = app || {};</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap for-h3">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <h3>The Home View</h3>
+<p>Serves as a container for the top-level template</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>app.HomeView = Backbone.View.extend({</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>attach view to the body element.     </p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    el: <span class="string">'#app'</span>,</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>The template is the container for the entire app.
+It is defined in the <code>&lt;script id=&quot;item-home&quot;&gt;</code> element.    </p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    initialize: <span class="function"><span class="keyword">function</span> <span class="params">()</span> {</span>
+        <span class="keyword">this</span>.template =_.template($(<span class="string">'#item-home'</span>).html());
+        <span class="keyword">this</span>.render();
+    },</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>The render function for this view. Returns the DOM
+that represents the whole view, but does not cause
+the browser to insert into the DOM just yet.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    render: <span class="keyword">function</span>() {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p><code>$el</code> is the jQuery version of the current view&#39;s element
+that is the <code>&lt;div id=&quot;app&quot;&gt;</code> tag.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">var</span> el = <span class="keyword">this</span>.$el</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>Clear the element then append the contents of the template.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        el.empty();
+        el.append(<span class="keyword">this</span>.template());</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-8">&#182;</a>
+              </div>
+              <p>Create a view for the list of projects </p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">var</span> availableProjectsListView = <span class="keyword">new</span> app.ProjectListView({collection: app.projectList});</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-9">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-9">&#182;</a>
+              </div>
+              <p>Replace the <code>&lt;ul id=&quot;p-list&quot;&gt;&lt;/ul&gt;</code> element, with the rendered list</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        $(<span class="string">"#p-list"</span>).append(availableProjectsListView.render().el);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-10">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-10">&#182;</a>
+              </div>
+              <p>return <code>this</code>, allows method chaining later</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">return</span> <span class="keyword">this</span>;
+    }
+});</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>
